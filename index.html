@@ -7,6 +7,8 @@
 </head>
 <body>
     <div id="cross-domain-check-status">Receiving from imbedded iframe... (open devTools to see if any errors)</div>
+    <iframe id="child-iframe" src="https://tinnick.github.io/cross-domain-message-child" width="100%" frameborder="0" onload="postMessageToChild()"></iframe>
+    
     <script>
         const crossDomainCheckStatusElement = document.querySelector('#cross-domain-check-status');
 
@@ -15,8 +17,12 @@
                 crossDomainCheckStatusElement.innerHTML = 'SUCCESS!! (child > parent)';
             }
         });
-    </script>
 
-    <iframe src="https://tinnick.github.io/cross-domain-message-child" width="100%" frameborder="0" onload="this.contentWindow.postMessage('cross-domain-message-parent')"></iframe>
+        const childIframeElement = document.querySelector('child-iframe');
+
+        function postMessageToChild() {
+            childIframeElement.contentWindow.postMessage('cross-domain-message-parent');
+        }
+    </script>
 </body>
 </html>
