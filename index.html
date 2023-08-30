@@ -18,7 +18,7 @@
             }
         });
 
-        const childIframeElement = document.querySelector('child-iframe');
+        const childIframeElement = document.querySelector('#child-iframe');
 
         function postMessageToChild() {
             childIframeElement.contentWindow.postMessage('cross-domain-message-parent');
