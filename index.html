@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="cross-domain-check-status">Checking... (open devTools to see if any errors)</div>
+    <script>
+        const crossDomainCheckStatusElement = document.querySelector('#cross-domain-check-status');
+
+        window.addEventListener('message', event => {
+            if (event.data.message === 'cross-domain-message-child') {
+                crossDomainCheckStatusElement.innerHTML = 'SUCCESS!';
+            }
+        });
+    </script>
+
+    <iframe src="https://github.com/tinnick/cross-domain-message-child" hidden></iframe>
+</body>
+</html>
